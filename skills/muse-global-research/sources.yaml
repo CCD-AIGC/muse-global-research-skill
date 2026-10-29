@@ -1,0 +1,171 @@
+# Muse Global Research — tiered sources
+# How to read this file:
+#   tier A = verified live on 2026-10-29 (XML returned, items fresh that day)
+#   tier B = documented address, NOT verified item-by-item on 2026-10-29; test one item before citing
+#   tier C = confirmed dead/unusable on 2026-10-29; do NOT use as a default, use fallback
+#   tier D = no stable RSS; use the platform page / search / browser, never invent a feed URL
+# Rules: a tier B URL is not "verified". A tier C source stays out of the routine list
+# until a fresh live test passes. After two consecutive failed weekly checks, demote A/B to "under repair".
+version: 1
+verified_on: "2026-10-29"
+maintainer_note: "For Muse. Re-run scripts/check_feeds.py weekly; update verified_on and tier on every change."
+
+overseas:
+  - name: "Hacker News"
+    tier: A
+    kind: rss
+    url: "https://news.ycombinator.com/rss"
+    use_for: ["tech", "startups", "AI tools"]
+    fallback: "https://hnrss.org/frontpage?points=100&count=20"
+    notes: "2026-10-29 fetch returned XML, items mostly 2026-10-28, with comment links."
+  - name: "TechCrunch"
+    tier: A
+    kind: rss
+    url: "https://techcrunch.com/feed/"
+    use_for: ["startups", "funding", "tech news"]
+    fallback: "TechCrunch site search / browser"
+    notes: "2026-10-29 fetch returned XML, latest item 2026-10-28 23:58 UTC."
+  - name: "Hacker News (filtered, hnrss)"
+    tier: B
+    kind: rss
+    url: "https://hnrss.org/frontpage?points=100&count=20"
+    use_for: ["tech", "startups"]
+    fallback: "https://news.ycombinator.com/rss"
+    notes: "Noise filter: only 100+ point posts. Flaky on 2026-10-29: first check returned 502, second check same day returned XML with 15 items. Keep as Tier B (test before use)."
+  - name: "The Verge"
+    tier: A
+    kind: rss
+    url: "https://www.theverge.com/rss/index.xml"
+    use_for: ["tech", "culture"]
+    fallback: "The Verge site search"
+    notes: "Promoted to Tier A after 2026-10-29 check: XML, 10 items, newest 2026-10-28."
+  - name: "Ars Technica"
+    tier: A
+    kind: rss
+    url: "https://feeds.arstechnica.com/arstechnica/index"
+    use_for: ["tech", "science"]
+    fallback: "Ars Technica site search"
+    notes: "Promoted to Tier A after 2026-10-29 check: XML, 20 items, newest 2026-10-28."
+  - name: "Wired"
+    tier: A
+    kind: rss
+    url: "https://www.wired.com/feed/rss"
+    use_for: ["tech", "culture"]
+    fallback: "Wired site search"
+    notes: "Promoted to Tier A after 2026-10-29 check: XML, 50 items, newest 2026-10-28."
+  - name: "MIT Technology Review (top news)"
+    tier: A
+    kind: rss
+    url: "https://www.technologyreview.com/topnews.rss"
+    use_for: ["AI", "frontier tech"]
+    fallback: "MIT Technology Review site search"
+    notes: "Promoted to Tier A after 2026-10-29 check: XML, 10 items, newest 2026-10-28."
+  - name: "Techmeme"
+    tier: A
+    kind: rss
+    url: "https://www.techmeme.com/feed.xml"
+    use_for: ["tech news aggregation"]
+    fallback: "Techmeme site"
+    notes: "Promoted to Tier A after 2026-10-29 check: XML, 15 items, newest 2026-10-28."
+  - name: "GitHub Blog"
+    tier: A
+    kind: rss
+    url: "https://github.blog/feed/"
+    use_for: ["developer tools", "open source"]
+    fallback: "GitHub Trending page / search"
+    notes: "Promoted to Tier A after 2026-10-29 check: XML, 10 items, newest 2026-10-28."
+  - name: "Reddit (per-subreddit)"
+    tier: B
+    kind: rss
+    url_pattern: "https://www.reddit.com/r/<subreddit>/.rss"
+    examples: ["startups", "Entrepreneur", "artificial"]
+    use_for: ["community signal", "pain points"]
+    fallback: "Subreddit page via browser"
+    notes: "Public posts only; respect subreddit rules."
+
+domestic:
+  - name: "36氪"
+    tier: C
+    kind: rss
+    url: "https://36kr.com/feed"
+    alternates: ["https://36kr.com/feed-article", "https://36kr.com/feed-newsflash"]
+    use_for: ["创投", "商业", "科技"]
+    fallback: "RSSHub 36氪路由（实测后）或 36氪站内搜索 / 浏览器"
+    notes: "2026-10-29 direct fetch returned a security-check page, not XML. Third-party monitoring also reported non-response since 2026-08-05. Do NOT default to this feed."
+  - name: "虎嗅"
+    tier: A
+    kind: rss
+    url: "https://rss.huxiu.com/"
+    alternates: ["https://www.huxiu.com/rss/0.xml"]
+    use_for: ["商业", "科技"]
+    fallback: "虎嗅站内搜索 / 浏览器"
+    notes: "Promoted to Tier A after 2026-10-29 check: XML, 43 items, newest 2026-10-29 10:09 +0800."
+  - name: "钛媒体"
+    tier: A
+    kind: rss
+    url: "https://www.tmtpost.com/rss.xml"
+    use_for: ["科技", "商业"]
+    fallback: "钛媒体站内搜索 / 浏览器"
+    notes: "Promoted to Tier A after 2026-10-29 check: XML, 20 items, newest 2026-10-29 10:03 +0800."
+  - name: "IT之家"
+    tier: A
+    kind: rss
+    url: "https://www.ithome.com/rss/"
+    use_for: ["科技", "数码"]
+    fallback: "IT之家站内搜索 / 浏览器"
+    notes: "Promoted to Tier A after 2026-10-29 check: XML, 60 items, newest 2026-10-29 02:22 GMT."
+
+rsshub_routes:
+  # Patterns only. Every route must pass a live test in the round it is used.
+  # The official instance is rsshub.app; alternate/self-hosted instances are the first fallback.
+  - name: "RSSHub Bilibili popular"
+    tier: B
+    kind: rsshub
+    route: "rsshub.app/bilibili/popular/all"
+    use_for: ["B站热门", "爆款视频"]
+    fallback: "Bilibili popular page via browser"
+  - name: "RSSHub Bilibili user video"
+    tier: B
+    kind: rsshub
+    route: "rsshub.app/bilibili/user/video/:uid"
+    use_for: ["对标账号追踪"]
+    fallback: "Bilibili user page via browser"
+  - name: "RSSHub Bilibili user dynamic"
+    tier: B
+    kind: rsshub
+    route: "rsshub.app/bilibili/user/dynamic/:uid"
+    use_for: ["对标账号追踪"]
+    fallback: "Bilibili user page via browser"
+  - name: "RSSHub Weibo hot search"
+    tier: B
+    kind: rsshub
+    route: "rsshub.app/weibo/search/hot"
+    use_for: ["微博热搜"]
+    fallback: "Weibo hot search page via browser"
+  - name: "RSSHub Juejin category"
+    tier: B
+    kind: rsshub
+    route: "rsshub.app/juejin/category/:category"
+    use_for: ["开发者内容"]
+    fallback: "Juejin category page"
+  - name: "RSSHub Zhihu hotlist"
+    tier: C
+    kind: rsshub
+    route: "rsshub.app/zhihu/hotlist"
+    use_for: []
+    fallback: "Current Zhihu route in latest RSSHub docs (live-test first) or Zhihu hot page via browser"
+    notes: "CONFIRMED DEAD 2026-10-29: text fetch 403; browser check loaded rsshub.app but the route returned NotFoundError: route does not exist or has been deleted, no feed items. Removed from routine use."
+
+no_stable_rss:
+  - "微信公众号（多数）: use RSSHub WeChat route only after a live test, else account page / search"
+  - "小红书: no stable official RSS; use search / browser, never invent a feed URL"
+  - "抖音单账号 / 抖音热榜: use platform hot-list archives or page via browser, not an invented RSS URL"
+  - "B站单账号: prefer RSSHub user routes above after a live test, else the user page"
+
+platform_pages_not_rss:
+  - name: "Bilibili popular rank"
+    url: "https://www.bilibili.com/v/popular/rank/all"
+    note: "Ranking page, not RSS. Do not cite it as an RSS source."
+  - name: "GitHub Trending"
+    url: "https://github.com/trending"
+    note: "Use for developer-tool heat; verify via repo pages."

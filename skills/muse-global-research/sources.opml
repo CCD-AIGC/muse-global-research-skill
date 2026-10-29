@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Muse Global Research — importable OPML.
+     Tier A = passed the 2026-10-29 scripts/check_feeds.py run (XML + fresh items).
+     Tier B = documented, test before citing; hnrss returned 502 on 2026-10-29.
+     Tier C dead sources (rsshub.app/zhihu/hotlist, 36Kr direct feed) are DELIBERATELY EXCLUDED.
+     See sources.yaml for tiers, fallbacks, and the weekly health-check rule. -->
+<opml version="2.0">
+  <head>
+    <title>Muse Global Research — Overseas + Domestic</title>
+    <dateCreated>2026-10-29</dateCreated>
+  </head>
+  <body>
+    <outline text="Overseas — Verified (Tier A, 2026-10-29)" title="Overseas — Verified">
+      <outline type="rss" text="Hacker News" title="Hacker News" xmlUrl="https://news.ycombinator.com/rss" htmlUrl="https://news.ycombinator.com/" />
+      <outline type="rss" text="TechCrunch" title="TechCrunch" xmlUrl="https://techcrunch.com/feed/" htmlUrl="https://techcrunch.com/" />
+      <outline type="rss" text="The Verge" title="The Verge" xmlUrl="https://www.theverge.com/rss/index.xml" htmlUrl="https://www.theverge.com/" />
+      <outline type="rss" text="Ars Technica" title="Ars Technica" xmlUrl="https://feeds.arstechnica.com/arstechnica/index" htmlUrl="https://arstechnica.com/" />
+      <outline type="rss" text="Wired" title="Wired" xmlUrl="https://www.wired.com/feed/rss" htmlUrl="https://www.wired.com/" />
+      <outline type="rss" text="MIT Technology Review — Top News" title="MIT Technology Review" xmlUrl="https://www.technologyreview.com/topnews.rss" htmlUrl="https://www.technologyreview.com/" />
+      <outline type="rss" text="Techmeme" title="Techmeme" xmlUrl="https://www.techmeme.com/feed.xml" htmlUrl="https://www.techmeme.com/" />
+      <outline type="rss" text="GitHub Blog" title="GitHub Blog" xmlUrl="https://github.blog/feed/" htmlUrl="https://github.blog/" />
+    </outline>
+    <outline text="Domestic — Verified (Tier A, 2026-10-29)" title="Domestic — Verified">
+      <outline type="rss" text="虎嗅" title="虎嗅" xmlUrl="https://rss.huxiu.com/" htmlUrl="https://www.huxiu.com/" />
+      <outline type="rss" text="钛媒体" title="钛媒体" xmlUrl="https://www.tmtpost.com/rss.xml" htmlUrl="https://www.tmtpost.com/" />
+      <outline type="rss" text="IT之家" title="IT之家" xmlUrl="https://www.ithome.com/rss/" htmlUrl="https://www.ithome.com/" />
+    </outline>
+    <outline text="Overseas — Documented, test before citing (Tier B)" title="Overseas — Tier B">
+      <outline type="rss" text="Hacker News filtered (hnrss, 100+ points)" title="Hacker News filtered" xmlUrl="https://hnrss.org/frontpage?points=100&amp;count=20" htmlUrl="https://hnrss.org/frontpage" />
+    </outline>
+  </body>
+</opml>
